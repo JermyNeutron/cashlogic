@@ -2,7 +2,7 @@
 
 __pycache__/
 .venv/
-venv\
+venv/
 
 scratch1.py
 scratch2.py
