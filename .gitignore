@@ -2,3 +2,6 @@
 
 __pycache__/
 .venv/
+venv/
+scratch/
+cashlogic_desktop.code-workspace
