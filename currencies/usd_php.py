@@ -29,6 +29,8 @@ def get_usd_php_rate():
     else:
         return "Failed to load pages"
 
+def am_bookmarked():
+    print(f"Current rate is $1 USD to ₱{get_usd_php_rate()} PHP")
 
 if __name__ == "__main__":
     print(get_usd_php_rate())

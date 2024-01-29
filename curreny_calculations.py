@@ -13,24 +13,26 @@ current_usdphp_rate = usd_php.get_usd_php_rate()
 def convert():
     while True:
         choice_convert = input(
-            "\nHow would you like to convert?\n1. USD -> PHP\n2. PHP -> USD\n\n: "
+            "\nHow would you like to convert?\n1. USD -> PHP\n2. PHP -> USD\nq) Go back\n\n: "
         )
-        if choice_convert == "1":
+        if choice_convert == 'q':
+            return False
+        elif choice_convert == "1":
             amount_convert = input("\nEnter the amount of USD to convert: $")
             choice_value = locale.atof(amount_convert)
             operation = choice_value * current_usdphp_rate
             converted_value = locale.format_string("%.2f", operation, grouping=True)
             # return f"\n${amount_convert} converts to ₱{converted_value}.", True
             print(f"\n${amount_convert} converts to ₱{converted_value}.")
-            break
-        else:
+            continue
+        elif choice_convert == '2':
             amount_convert = input("\nEnter the amount of PHP to convert: ₱")
             choice_value = locale.atof(amount_convert)
             operation = choice_value / current_usdphp_rate
             converted_value = locale.format_string("%.2f", operation, grouping=True)
             # return f"\n₱{amount_convert} converts to ${converted_value}.", True
             print(f"\n₱{amount_convert} converts to ${converted_value}.")
-            break
+            continue
 
 
 if __name__ == "__main__":

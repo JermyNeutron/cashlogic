@@ -3,10 +3,5 @@
 __pycache__/
 .venv/
 venv/
-
-scratch1.py
-scratch2.py
-scratch3.py
-scratch4.py
-dictionaryex.py
+scratch/
 cashlogic_desktop.code-workspace
