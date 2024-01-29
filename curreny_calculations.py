@@ -1,6 +1,6 @@
 # currency calculations
 import locale  # accepts commas in number inputs
-import usd_php
+from currencies import usd_php
 import os
 
 # everything I guess I'd wanna know
