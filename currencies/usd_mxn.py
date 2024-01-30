@@ -26,7 +26,7 @@ def get_usd_mxn_rate():
         if price_div:
             # extract price
             price = price_div.text.strip()
-            return float(price)
+            return price
         else:
             return "Price couldn't be found."
     else:

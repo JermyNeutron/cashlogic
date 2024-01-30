@@ -1,8 +1,9 @@
 # convert USD and PHP interchangeably
 # ₱ PHP
+
+# convert USD and PHP interchangeably
 import requests
 from bs4 import BeautifulSoup
-
 
 def get_usd_php_rate():
     url = "https://www.investing.com/currencies/usd-php"
@@ -24,7 +25,7 @@ def get_usd_php_rate():
         if price_div:
             # extract price
             price = price_div.text.strip()
-            return float(price)
+            return price
         else:
             return "Price couldn't be found."
     else:
