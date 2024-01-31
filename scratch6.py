@@ -3,11 +3,6 @@ import locale # accepts commas in number inputs
 import os
 from currencies import usd_idr, usd_mxn, usd_php
 
-print('\ninitializing...\n')
-
-# accepts commas as input
-locale.setlocale(locale.LC_ALL, "")
-
 # clear console
 def clear_screen():
     # for Windows:
@@ -15,23 +10,6 @@ def clear_screen():
         _ = os.system('cls')
     else:
         _ = os.system('clear')
-
-# MAKE UPDATES HERE
-php_rate = float(locale.atof(usd_php.get_usd_php_rate()))
-print('PHP', end=', ', flush=True)
-mxn_rate = float(locale.atof(usd_mxn.get_usd_mxn_rate()))
-print('MXN', end=', ', flush=True)
-idr_rate = float(locale.atof(usd_idr.get_usd_idr_rate()))
-print('IDR', end=', ', flush=True)
-
-# MAKE UPDATES HERE
-currency_list = {
-    '1': ('₱', php_rate, 'PHP'),
-    '2': ('$', mxn_rate, 'MXN'),
-    '3': ('Rp ', idr_rate, 'IDR'),
-}
-
-clear_screen()
 
 # forward conversion
 def usd_to_other(symbol, current_rate, abbreviation):
@@ -79,6 +57,28 @@ def sub_main(symbol, rate, abbreviation):
 
 # main function
 def main():
+    print('\ninitializing...\n')
+
+    # accepts commas as input
+    locale.setlocale(locale.LC_ALL, "")
+
+    # MAKE UPDATES HERE
+    php_rate = float(locale.atof(usd_php.get_usd_php_rate()))
+    print('PHP', end=', ', flush=True)
+    mxn_rate = float(locale.atof(usd_mxn.get_usd_mxn_rate()))
+    print('MXN', end=', ', flush=True)
+    idr_rate = float(locale.atof(usd_idr.get_usd_idr_rate()))
+    print('IDR', end=', ', flush=True)
+
+    # MAKE UPDATES HERE
+    currency_list = {
+        '1': ('₱', php_rate, 'PHP'),
+        '2': ('$', mxn_rate, 'MXN'),
+        '3': ('Rp ', idr_rate, 'IDR'),
+    }
+
+    clear_screen()
+
     while True:
         choice_convert = input('Select currency:\n1) Filipino PHP\n2) Mexican MXN\n3) Indonesian IDR\nQ) Exit\n\n: ')
 

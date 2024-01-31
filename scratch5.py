@@ -8,7 +8,7 @@ def practice():
     pass
 
 options = {
-    'a': currency_calculations.convert,
+    'a': currency_calculations.main,
     'b': lambda: (print('good'), print('bye'))
 }
 
