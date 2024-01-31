@@ -1,19 +1,37 @@
 # currency calculations
 import locale # accepts commas in number inputs
+import os
 from currencies import usd_idr, usd_mxn, usd_php
+
+print('\ninitializing...\n')
 
 # accepts commas as input
 locale.setlocale(locale.LC_ALL, "")
 
-php_rate = float(locale.atof(usd_php.get_usd_php_rate()))
-mxn_rate = float(locale.atof(usd_mxn.get_usd_mxn_rate()))
-idr_rate = float(locale.atof(usd_idr.get_usd_idr_rate()))
+# clear console
+def clear_screen():
+    # for Windows:
+    if os.name == 'nt':
+        _ = os.system('cls')
+    else:
+        _ = os.system('clear')
 
+# MAKE UPDATES HERE
+php_rate = float(locale.atof(usd_php.get_usd_php_rate()))
+print('PHP', end=', ', flush=True)
+mxn_rate = float(locale.atof(usd_mxn.get_usd_mxn_rate()))
+print('MXN', end=', ', flush=True)
+idr_rate = float(locale.atof(usd_idr.get_usd_idr_rate()))
+print('IDR', end=', ', flush=True)
+
+# MAKE UPDATES HERE
 currency_list = {
     '1': ('₱', php_rate, 'PHP'),
     '2': ('$', mxn_rate, 'MXN'),
     '3': ('Rp ', idr_rate, 'IDR'),
 }
+
+clear_screen()
 
 # forward conversion
 def usd_to_other(symbol, current_rate, abbreviation):
@@ -25,7 +43,7 @@ def usd_to_other(symbol, current_rate, abbreviation):
             amount_convert = locale.atof(amount)
             fc_operation = amount_convert * current_rate
             fc_converted_value = locale.format_string("%.2f", fc_operation, grouping=True)
-            print(f"\n${amount_convert} USD converts to {symbol}{fc_converted_value} {abbreviation}.\nEnter a new amount or enter 'q' to go back\n\n")
+            print(f"\n${amount_convert} USD converts to {symbol}{fc_converted_value} {abbreviation}.\nEnter a new amount or enter 'q' to go back.")
         except ValueError:
             print("\nInvalid amount.")
 
@@ -39,7 +57,7 @@ def other_to_usd(symbol, current_rate, abbreviation):
             amount_convert = locale.atof(amount)
             bc_operation = amount_convert / current_rate
             bc_converted_value = locale.format_string("%.2f", bc_operation, grouping=True)
-            print(f"\n{symbol}{amount_convert} {abbreviation} converts to ${bc_converted_value} USD.\nEnter a new amount or enter 'q' to go back\n\n")
+            print(f"\n{symbol}{amount_convert} {abbreviation} converts to ${bc_converted_value} USD.\nEnter a new amount or enter 'q' to go back.")
         except ValueError:
             print("\nInvalid amount.")
 
@@ -62,7 +80,7 @@ def sub_main(symbol, rate, abbreviation):
 # main function
 def main():
     while True:
-        choice_convert = input('\nSelect currency:\n1) PHP\n2) MXN\n3) IDR\nQ) Go back\n\n: ')
+        choice_convert = input('Select currency:\n1) Filipino PHP\n2) Mexican MXN\n3) Indonesian IDR\nQ) Exit\n\n: ')
 
         if choice_convert == 'q':
             return False
@@ -76,7 +94,7 @@ def main():
         elif choice_convert == '3':
             sub_main(*currency_list[choice_convert]) 
         else:
-            print('Invalid selection.')
+            print('\nInvalid selection.')
 
 if __name__ == '__main__':
     main()
