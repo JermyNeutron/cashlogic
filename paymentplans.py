@@ -56,7 +56,7 @@ def main():
     print("PAYMENT PLANS")
     while True:
         clear_screen()
-        choice = input("\nWhich payment plan are we using?\n1) Paypal | 6 Months with 0%\n2) Paypal | 4 Payments over 6 Weeks\nq) Exit\n\n: ")
+        choice = input("\nWhich payment plan are we using?\n1) Paypal | 6 Months with 0%\n2) Paypal | 4 Payments over 6 Weeks\nQ) Return to Main Menu\n\n: ")
 
         if choice == 'q':
             return False

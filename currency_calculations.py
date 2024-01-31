@@ -19,9 +19,10 @@ def usd_to_other(symbol, current_rate, abbreviation):
             return False
         try:
             amount_convert = locale.atof(amount)
+            amount_convert_value = locale.format_string("%.2f", amount_convert, grouping=True)
             fc_operation = amount_convert * current_rate
             fc_converted_value = locale.format_string("%.2f", fc_operation, grouping=True)
-            print(f"\n${amount_convert} USD converts to {symbol}{fc_converted_value} {abbreviation}.\nEnter a new amount or enter 'q' to go back.")
+            print(f"\n${amount_convert_value} USD converts to {symbol}{fc_converted_value} {abbreviation}.\nEnter a new amount or enter 'q' to go back.")
         except ValueError:
             print("\nInvalid amount.")
 
@@ -33,9 +34,10 @@ def other_to_usd(symbol, current_rate, abbreviation):
             return False
         try:
             amount_convert = locale.atof(amount)
+            amount_convert_value = locale.format_string("%.2f", amount_convert, grouping=True)
             bc_operation = amount_convert / current_rate
             bc_converted_value = locale.format_string("%.2f", bc_operation, grouping=True)
-            print(f"\n{symbol}{amount_convert} {abbreviation} converts to ${bc_converted_value} USD.\nEnter a new amount or enter 'q' to go back.")
+            print(f"\n{symbol}{amount_convert_value} {abbreviation} converts to ${bc_converted_value} USD.\nEnter a new amount or enter 'q' to go back.")
         except ValueError:
             print("\nInvalid amount.")
 
@@ -77,10 +79,9 @@ def main():
         '3': ('Rp ', idr_rate, 'IDR'),
     }
 
-    clear_screen()
-
     while True:
-        choice_convert = input('Select currency:\n1) Filipino PHP\n2) Mexican MXN\n3) Indonesian IDR\nQ) Exit\n\n: ')
+        clear_screen()
+        choice_convert = input('Select currency:\n1) Filipino PHP\n2) Mexican MXN\n3) Indonesian IDR\nQ) Return to Main Menu\n\n: ')
 
         if choice_convert == 'q':
             return False

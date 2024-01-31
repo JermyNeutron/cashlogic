@@ -1,4 +1,5 @@
 import currency_calculations
+import paymentplans
 from currencies import usd_php
 from database import create_table, insert_config, get_config # database.py
 import sqlite3
@@ -8,8 +9,8 @@ def practice():
     pass
 
 options = {
-    'a': currency_calculations.main,
-    'b': lambda: (print('good'), print('bye'))
+    '1': currency_calculations.main,
+    '2': paymentplans.main,
 }
 
 # PHP bookmark
@@ -41,19 +42,19 @@ def main():
 
     while True:
         print("""
-What's your respone?
-a) Convert Currencies,
-b) goodbye,
-c) leave chat,
-d) Parameters
+What's your response?
+1) Convert Currencies
+2) Payment Plans
+Y) Parameters
+Q) Exit
         """)
         choice = input(": ")
 
 
-        if choice == "c":
+        if choice == "q":
             print("\nexiting...")
             break
-        elif choice == 'd':
+        elif choice == 'y':
             user_pref.user_parameters(cursor)
         elif choice in options:
             options[choice]()
