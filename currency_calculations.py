@@ -1,6 +1,7 @@
 # currency calculations
 import locale # accepts commas in number inputs
 import os
+import time
 from currencies import usd_idr, usd_mxn, usd_php
 
 # clear console
@@ -81,9 +82,9 @@ def main():
 
     while True:
         clear_screen()
-        choice_convert = input('Select currency:\n1) Filipino PHP\n2) Mexican MXN\n3) Indonesian IDR\nQ) Return to Main Menu\n\n: ')
+        choice_convert = input('Select currency:\n1) Filipino PHP\n2) Mexican MXN\n3) Indonesian IDR\n\nY) Add New Currency \nQ) Return to Main Menu\n\n: ')
 
-        if choice_convert == 'q':
+        if choice_convert.lower() == 'q':
             return False
         # set currency to Filipino PHP
         elif choice_convert == '1':
@@ -94,6 +95,12 @@ def main():
         # set currency to Indonesian IDR
         elif choice_convert == '3':
             sub_main(*currency_list[choice_convert]) 
+        
+        # add new currency
+        elif choice_convert.lower() == 'y':
+            clear_screen()
+            print('Adding a new currency is currently disabled. Try again later. Returning to menu...')
+            time.sleep(5)
         else:
             print('\nInvalid selection.')
 
