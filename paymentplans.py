@@ -2,6 +2,7 @@
 
 import locale
 import os
+import time
 
 def clear_screen():
     if os.name == 'nt':
@@ -9,8 +10,8 @@ def clear_screen():
     else:
         _ = os.system('clear')
 
-
-def paypal_6mo(set_tax):
+# Divide a cost over 6 months
+def paypal_6mo(set_tax=0.09):
     locale.setlocale(locale.LC_ALL, "")
     while True:
         tax_estimated = set_tax
@@ -30,7 +31,8 @@ Enter a new amount or enter 'q' to go back.""")
         except ValueError:
             print("\nInvalid amount.")
 
-def fourpayments(set_tax):
+# Divide a cost over 4 payments made every 15 days
+def fourpayments(set_tax=0.09):
     locale.setlocale(locale.LC_ALL, "")
     while True:
         tax_estimated = set_tax
@@ -50,23 +52,32 @@ Enter a new amount or enter 'q' to go back.""")
         except ValueError:
             print('\nInvalid amount.')
     
+# Girl Math
+def girlmath():
+    pass
 
+# Run program
 def main():
-    set_tax = 0.09 # 9% estimated
-    print("PAYMENT PLANS")
     while True:
         clear_screen()
-        choice = input("\nWhich payment plan are we using?\n1) Paypal | 6 Months with 0%\n2) Paypal | 4 Payments over 6 Weeks\nQ) Return to Main Menu\n\n: ")
+        print("PAYMENT PLANS")
+        choice = input("\nWhich payment plan are we using?\n1) Paypal | 6 Months with 0%\n2) Paypal | 4 Payments over 6 Weeks\n3) Girl Math \nQ) Return to Main Menu\n\n: ")
 
         if choice == 'q':
             return False
         elif choice == '1':
-            paypal_6mo(set_tax)
+            paypal_6mo()
         elif choice == '2':
-            fourpayments(set_tax)
+            fourpayments()
+
+            # UPDATE, temporary solution
+        elif choice == '3':
+            clear_screen()
+            print("\"Girl Math\" is currently being developed. Try again later. Returning to menu...", flush=False)
+            time.sleep(5)
         else:
             print('\nInvalid choice.')
 
+# testing purposes
 if __name__ == '__main__':
-    clear_screen()
     main()
