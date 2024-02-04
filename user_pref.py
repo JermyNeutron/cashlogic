@@ -16,36 +16,36 @@ def disable_php_parameter(cursor):
 def user_parameters(cursor):
     while True:
         print("""Parameters:
-1. PHP
-q. Go back
+1) PHP
+Q) Go back
               """)
         
         parameter_choice = input(': ')
 
-        if parameter_choice == 'q':
+        if parameter_choice.lower() == 'q':
             return False
         elif parameter_choice == '1':
             # Sub-menu for PHP
             # create menu if one does not exist
             print("""Choose an action:
-y. Enable,
-n. Disable,
-1. Go back
+Y) Enable,
+N) Disable,
+Q) Go back
                   """)
             action_choice = input(': ')
 
-            if action_choice == 'q':
+            if action_choice.lower() == 'q':
                 return False
-            elif action_choice == 'y':
+            elif action_choice.lower() == 'y':
                 # enable PHP parameter
                 enable_php_parameter(cursor)
-            elif action_choice == 'n':
+            elif action_choice.lower() == 'n':
                 # enable PHP parameter
                 disable_php_parameter(cursor)
             else:
-                print('Invalid choice. Choose again.')
+                print('\nInvalid choice. Choose again.')
         else:
-            print('Invalid choice. Choose again.')
+            print('\nInvalid choice. Choose again.')
 
 if __name__ == '__main__':
     conn = sqlite3.connect('scratchdb1.db')
