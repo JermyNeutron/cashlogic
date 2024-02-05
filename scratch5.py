@@ -53,15 +53,15 @@ Q) Exit
         choice = input(": ")
 
 
-        if choice == "q":
+        if choice.lower() == "q":
             print("\nexiting...")
             break
-        elif choice == 'y':
+        elif choice.lower() == 'y':
             user_pref.user_parameters(cursor)
         elif choice in options:
             options[choice]()
         else:
-            print("invalid choice. choose again")
+            print("\nInvalid choice. choose again")
 
     conn.commit()
     conn.close()
