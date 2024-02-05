@@ -2,7 +2,8 @@
 
 import locale
 import os
-import time
+# import time
+import girlmath
 
 def clear_screen():
     if os.name == 'nt':
@@ -51,10 +52,6 @@ With an estimated tax of {tax_estimated * 100}%: ${operation_w_tax_formatted}.
 Enter a new amount or enter 'q' to go back.""")
         except ValueError:
             print('\nInvalid amount.')
-    
-# Girl Math
-def girlmath():
-    pass
 
 # Run program
 def main():
@@ -72,9 +69,7 @@ def main():
 
             # UPDATE, temporary solution
         elif choice == '3':
-            clear_screen()
-            print("\"Girl Math\" is currently being developed. Try again later. Returning to menu...", flush=False)
-            time.sleep(5)
+            girlmath.main()
         else:
             print('\nInvalid choice.')
 
