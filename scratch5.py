@@ -1,14 +1,17 @@
 # working main_test
 
-import currency_calculations
-import paymentplans
-from currencies import usd_php
-from database import create_table, insert_config, get_config # database.py
+from functions import currency_calculations, paymentplans
+from functions.currencies import usd_php
+from functions.database import create_table, insert_config, get_config # database.py
 import sqlite3
-import user_pref
+import functions.user_pref as user_pref
+import os
 
-def practice():
-    pass
+def clear_screen():
+    if os.name == 'nt':
+        _ = os.system('cls')
+    else:
+        _ = os.system('clear')
 
 options = {
     '1': currency_calculations.main,
@@ -27,14 +30,14 @@ def main():
     print("Welcome!")
     
     # connect to SQLite database
-    conn = sqlite3.connect('scratch\scratchdb1.db')
+    conn = sqlite3.connect('database/user_pref.db')
     cursor = conn.cursor()
-
-    # bookmark statements
-    am_bookmarked_usd_php(cursor)
 
     # create table if one does not exist
     create_table(cursor)
+
+    # bookmark statements
+    am_bookmarked_usd_php(cursor)
 
     #enable or disable the am_bookmarked function in usd_php
     # insert_config(cursor, 'am_bookmarked_usd_php', 'enabled') # or 'disabled'
@@ -62,6 +65,8 @@ Q) Exit
             options[choice]()
         else:
             print("\nInvalid choice. choose again")
+
+        clear_screen()
 
     conn.commit()
     conn.close()

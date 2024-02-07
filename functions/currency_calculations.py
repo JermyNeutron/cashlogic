@@ -2,7 +2,7 @@
 import locale # accepts commas in number inputs
 import os
 import time
-from currencies import usd_idr, usd_mxn, usd_php
+from .currencies import usd_idr, usd_mxn, usd_php
 
 # clear console
 def clear_screen():

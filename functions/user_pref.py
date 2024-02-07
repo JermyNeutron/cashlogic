@@ -1,5 +1,5 @@
 import sqlite3
-from database import create_table, insert_config, get_config
+from functions.database import create_table, insert_config, get_config
 
 def enable_php_parameter(cursor):
     insert_config(cursor, 'am_bookmarked_usd_php', 'enabled')

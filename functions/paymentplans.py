@@ -3,7 +3,7 @@
 import locale
 import os
 # import time
-import girlmath
+from . import girlmath
 
 def clear_screen():
     if os.name == 'nt':
