@@ -1,21 +1,31 @@
+from .database import create_table, insert_config, get_config
+import os
 import sqlite3
-from functions.database import create_table, insert_config, get_config
+
+def clear_screen():
+    if os.name == 'nt':
+        _ = os.system('cls')
+    else:
+        _ = os.system('clear')
 
 def enable_php_parameter(cursor):
+    clear_screen()
     insert_config(cursor, 'am_bookmarked_usd_php', 'enabled')
-    print('PHP parameter enabled.')
+    print('\nPHP parameter enabled.')
     status = get_config(cursor, 'am_bookmarked_usd_php')
     print(f'Status after: {status}')
 
 def disable_php_parameter(cursor):
+    clear_screen()
     insert_config(cursor, 'am_bookmarked_usd_php', 'disabled')
-    print('PHP parameter disabled.')
+    print('\nPHP parameter disabled.')
     status = get_config(cursor, 'am_bookmarked_usd_php')
     print(f'Status after: {status}')
 
 def user_parameters(cursor):
+    clear_screen()
     while True:
-        print("""Parameters:
+        print("""\nParameters:
 1) PHP
 Q) Go back
               """)
@@ -26,8 +36,7 @@ Q) Go back
             return False
         elif parameter_choice == '1':
             # Sub-menu for PHP
-            # create menu if one does not exist
-            print("""Choose an action:
+            print("""\nChoose an action for PHP:
 Y) Enable,
 N) Disable,
 Q) Go back
